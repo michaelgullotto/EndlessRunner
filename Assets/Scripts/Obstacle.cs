@@ -11,9 +11,10 @@ public class Obstacle : MonoBehaviour
     private bool scoreadded = false;
     private void Update()
     {
+        // moves obstacle down 
         transform.Translate(Vector2.down * (Speed * Time.deltaTime));
+        //despawns obstacles after set time
         lifetime += Time.deltaTime;
-
         if (lifetime >= 8)
         {
             Destroy(gameObject);
@@ -29,6 +30,7 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    // damages player on collision 
     private void OnTriggerEnter2D(Collider2D other)
  {
      if (other.CompareTag("Player"))

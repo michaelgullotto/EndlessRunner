@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        
+        // choose random spot to spawn obstacles 
         if (timeBtwSpawn <= 0)
         {
             roll = Random.Range(1,4);
@@ -38,13 +38,16 @@ public class Spawner : MonoBehaviour
             {
                 targetpos.x = -2f;
             }
-
+            // moves spawner to selected location
             spawner.transform.position = targetpos;
+            //spawns
             Instantiate(obstacle, transform.position, quaternion.identity);
+            //resets spawn timer
             timeBtwSpawn = startTimeBtwSpawn;
         }
         else
         {
+            // counts down to next spawn
             timeBtwSpawn -= Time.deltaTime;
         }
     }
